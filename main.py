@@ -67,6 +67,8 @@ except Exception as e:
     logging.error(f"[❌] Gagal terhubung ke RabbitMQ: {e}")
     exit(1)
 
+
+
 def download_image(image_name):
     """Mengunduh gambar dari server"""
     image_url = f"https://image-view.sta.my.id/data/{image_name}"
@@ -82,6 +84,7 @@ def download_image(image_name):
     except Exception as e:
         logging.error(f"[❌] Error saat mengunduh gambar {image_name}: {e}")
         return None
+
 
 def process_image(image):
     """Mendeteksi jumlah manusia dalam gambar menggunakan Haar Cascade"""
@@ -104,6 +107,7 @@ def process_image(image):
         logging.error(f"[❌] Error saat memproses deteksi manusia: {e}")
         return 0
 
+
 def upload_to_ftp(local_filepath, remote_filename):
     """Mengunggah file ke FTP server"""
     try:
@@ -121,6 +125,7 @@ def upload_to_ftp(local_filepath, remote_filename):
         logging.error(f"[❌] Gagal mengunggah file ke FTP: {e}")
         return False
 
+
 def delete_local_file(filepath):
     """Menghapus file dari penyimpanan lokal"""
     try:
@@ -131,6 +136,7 @@ def delete_local_file(filepath):
             logging.warning(f"[⚠️] File tidak ditemukan untuk dihapus: {filepath}")
     except Exception as e:
         logging.error(f"[❌] Error saat menghapus file lokal: {e}")
+
 
 def draw_text_on_image(image, num_faces):
     """Menampilkan jumlah manusia yang terdeteksi pada gambar"""
@@ -143,6 +149,7 @@ def draw_text_on_image(image, num_faces):
     except Exception as e:
         logging.error(f"[❌] Error saat menandai gambar: {e}")
         return image
+
 
 def save_image(image, filename):
     """Menyimpan gambar hasil AI"""
@@ -162,6 +169,7 @@ def save_image(image, filename):
     except Exception as e:
         logging.error(f"[❌] Error saat menyimpan gambar: {e}")
         return None
+
 
 def callback(ch, method, properties, body):
     """Fungsi untuk menangani pesan dari RabbitMQ"""
@@ -218,6 +226,7 @@ def callback(ch, method, properties, body):
 
     except Exception as e:
         logging.error(f"[❌] Error dalam proses callback: {e}")
+
 
 # Mulai konsumsi pesan dari RabbitMQ
 logging.info("[🚀] Menunggu pesan dari RabbitMQ...")
