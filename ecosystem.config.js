@@ -3,7 +3,7 @@ module.exports = {
       {
         name: "ai-image-processor", // Nama aplikasi
         script: "python3",          // Perintah untuk menjalankan Python
-        args: "main.py",            // File Python yang akan dijalankan
+        args: "index.py",            // File Python yang akan dijalankan
         interpreter: "",            // Biarkan kosong untuk menggunakan Python default
         env: {
           NODE_ENV: "production",
