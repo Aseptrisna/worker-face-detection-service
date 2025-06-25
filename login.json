@@ -1,0 +1,6 @@
+{
+ "statusCode":200,
+ "message":"Berhasil Memuat Permintaan",
+ "token":"xxxxyyyzzz", 
+ "refresshToken":"xxxx"
+}
